@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+  <android.support.v7.widget.CardView
+      android:id="@+id/job_item"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+      <ImageView
+          android:id="@+id/cardview_job_image"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_marginRight="18dp"
+         />
+
+      <TextView
+          android:id="@+id/cardview_list_Job_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_toRightOf="@+id/cardview_job_image"
+          android:paddingBottom="5dp"
+          android:textSize="24sp" />
+
+      <TextView
+          android:id="@+id/short_description"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/cardview_list_Job_title"
+          android:layout_toRightOf="@+id/cardview_job_image"
+          android:textColor="#8b8b8b" />
+
+    </RelativeLayout>
+
+  </android.support.v7.widget.CardView>
+</LinearLayout>
