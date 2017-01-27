@@ -9,7 +9,7 @@ import java.util.List;
 import jobapp.sqli.com.jobapp.BuildConfig;
 import jobapp.sqli.com.jobapp.MainView;
 import jobapp.sqli.com.jobapp.constants.JobConstants;
-import jobapp.sqli.com.jobapp.model.FindItemsInteractor;
+import jobapp.sqli.com.jobapp.models.FindItemsInteractor;
 import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
 

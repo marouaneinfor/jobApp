@@ -43,4 +43,5 @@ public class ViewHolderRecruter extends RecyclerView.ViewHolder {
     mTextView_submittedCount.setText(job.getSubmittedCount());
 
   }
+
 }

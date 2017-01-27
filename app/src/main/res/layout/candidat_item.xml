@@ -84,6 +84,8 @@
           android:layout_toRightOf="@id/ImageView_recomandation"
           android:textColor="#8b8b8b"
           android:textSize="16sp"
+          android:textStyle="bold"
+
           />
       <TextView
           android:id="@+id/TextView_contact"
@@ -94,8 +96,10 @@
           android:layout_below="@+id/View_devider"
           android:layout_toRightOf="@id/TextView_recomandation"
           android:text="Contact"
-          android:textColor="#8b8b8b"
+          android:textColor="@color/pink"
           android:textSize="16sp"
+          android:textStyle="bold"
+
           />
 
       <TextView

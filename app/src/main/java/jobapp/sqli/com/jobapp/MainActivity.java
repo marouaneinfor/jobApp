@@ -12,11 +12,11 @@ import android.widget.Toast;
 import java.util.List;
 
 import jobapp.sqli.com.jobapp.adapters.MultipleViewTypesAdapter;
-import jobapp.sqli.com.jobapp.model.FindItemsInteractorImpl;
+import jobapp.sqli.com.jobapp.models.FindItemsInteractorImpl;
 import jobapp.sqli.com.jobapp.presenter.MainPresenter;
 import jobapp.sqli.com.jobapp.presenter.MainPresenterImpl;
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends AppCompatActivity implements MainView  {
   private RecyclerView mRecyclerView;
   private MultipleViewTypesAdapter mAdapter;
   private MainPresenter mPresenter;

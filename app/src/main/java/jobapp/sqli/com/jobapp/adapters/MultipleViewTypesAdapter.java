@@ -1,6 +1,7 @@
 package jobapp.sqli.com.jobapp.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,15 +54,25 @@ public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.
   }
 
   @Override
-  public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+  public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos) {
+    final int position=pos;
+
     switch (getItemViewType(position)) {
       case JobConstants.VIEW_TYPE_FOR_CANDIDAT:
-        ViewHolderCandidat mViewHolderCandidat = (ViewHolderCandidat) holder;
+        final Candidat candidat=(Candidat)mList.get(position);
+       final ViewHolderCandidat mViewHolderCandidat = (ViewHolderCandidat) holder;
         mViewHolderCandidat.setContent((Candidat) mList.get(position));
+        mViewHolderCandidat.getTextView_recomandation().setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            mViewHolderCandidat.setRecomandationCount(candidat.getCurrentRecommendation(),mViewHolderCandidat.getTextView_recomandation());
+          }
+        });
         break;
       case JobConstants.VIEW_TYPE_FOR_RECRUTER:
         ViewHolderRecruter mViewHolderRecruter = (ViewHolderRecruter) holder;
         mViewHolderRecruter.setContent((Job) mList.get(position));
+
         break;
     }
   }
@@ -69,5 +80,8 @@ public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.
   @Override
   public int getItemCount() {
     return mList.size();
+  }
+  public Object getItemByPosition(int position) {
+    return mList.get(position);
   }
 }

@@ -1,6 +1,6 @@
 
 
-package jobapp.sqli.com.jobapp.model;
+package jobapp.sqli.com.jobapp.models;
 
 import java.util.List;
 

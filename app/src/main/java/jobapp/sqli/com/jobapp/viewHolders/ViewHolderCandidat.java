@@ -20,8 +20,6 @@ public class ViewHolderCandidat extends RecyclerView.ViewHolder {
   TextView mTextView_recomandation;
   TextView mTextView_experience;
   TextView mTextView_contact;
-
-
   private View mView;
   private ImageLoader mImageLoader;
 
@@ -40,13 +38,23 @@ public class ViewHolderCandidat extends RecyclerView.ViewHolder {
     }
     mImageLoader = new ImageLoader(this.mView.getContext());
   }
-
   public void setContent(Candidat candidat) {
     mImageLoader.loadImage(candidat.getPicture(), mImageView_candidat);
     mTextView_name.setText(candidat.getFirstName() + " " + candidat.getLastName());
     mTextView_job.setText(candidat.getJob());
     mTextView_age.setText(candidat.getAge());
-    mTextView_recomandation.setText("RECOMANDER (" + candidat.getCurrentRecommendation() + ")");
     mTextView_experience.setText("Ex: " + candidat.getExperience() + " an(s)");
+    mTextView_recomandation.setText("RECOMANDER (" + candidat.getCurrentRecommendation() +
+        ")");  }
+  public TextView getTextView_recomandation() {
+    return mTextView_recomandation;
   }
+  public void setRecomandationCount(String recomandationCount,TextView mTextView_recomandation) {
+    int recomandCount =Integer.parseInt(recomandationCount)+1;
+    mTextView_recomandation.setText("RECOMANDER (" + recomandCount +
+     ")");
+    mTextView_recomandation.setTextColor(this.mView.getContext().getResources().getColor(R.color
+        .pink));
+  }
+
 }

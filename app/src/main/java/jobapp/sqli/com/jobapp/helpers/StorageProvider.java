@@ -10,7 +10,7 @@ import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
 
 
-public class StorageProvider {
+public class StorageProvider{
   private Realm realm;
 
   public StorageProvider(MainView mainView) {
