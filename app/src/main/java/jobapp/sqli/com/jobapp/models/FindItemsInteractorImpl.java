@@ -26,7 +26,7 @@ public class FindItemsInteractorImpl implements FindItemsInteractor {
   private List<Candidat> mCandidat = new ArrayList<>();
   private StorageProvider mStorageProvider;
   private MainView mainView;
-  private FindItemsService service;
+  private FindItemsService mService;
 
 
   public FindItemsInteractorImpl(MainView mainView) {
@@ -37,7 +37,7 @@ public class FindItemsInteractorImpl implements FindItemsInteractor {
         .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
         .build();
-    service = retrofit.create(FindItemsService.class);
+    mService = retrofit.create(FindItemsService.class);
     this.mainView = mainView;
     this.mStorageProvider = new StorageProvider(mainView);
   }
@@ -45,7 +45,7 @@ public class FindItemsInteractorImpl implements FindItemsInteractor {
   public void requestJobs() {
 
     if (NetworkInfo.isNetworkAvailable(this.mainView)) {
-      final Call<List<Job>> call = service.requestJobs();
+      final Call<List<Job>> call = mService.requestJobs();
       call.enqueue(new Callback<List<Job>>() {
         @Override
         public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
@@ -84,7 +84,7 @@ public class FindItemsInteractorImpl implements FindItemsInteractor {
 
     if (NetworkInfo.isNetworkAvailable(this.mainView)) {
 
-      final Call<List<Candidat>> call = service.requestCandidats();
+      final Call<List<Candidat>> call = mService.requestCandidats();
       call.enqueue(new Callback<List<Candidat>>() {
         @Override
         public void onResponse(Call<List<Candidat>> call, Response<List<Candidat>> response) {
