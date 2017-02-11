@@ -1,5 +1,6 @@
 package jobapp.sqli.com.jobapp.pojo;
 
+import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 import java.text.DateFormat;
@@ -11,105 +12,111 @@ import io.realm.RealmObject;
 
 @Parcel
 public class Job extends RealmObject implements Comparable<Job> {
-  private String picture;
+    @SerializedName("picture")
+    private String mPicture;
 
-  private String title;
+    @SerializedName("title")
+    private String mTitle;
 
-  private String postedDate;
+    @SerializedName("postedDate")
+    private String mPostedDate;
 
-  private String viewedCount;
+    @SerializedName("viewedCount")
+    private String mViewedCount;
 
-  private String postedBy;
+    @SerializedName("postedBy")
+    private String mPostedBy;
 
-  private String submittedCount;
+    @SerializedName("submittedCount")
+    private String mSubmittedCount;
 
-  public Job() {
-  }
-
-  public Job(String picture, String title, String postedDate, String viewedCount, String postedBy, String submittedCount) {
-    this.picture = picture;
-    this.title = title;
-    this.postedDate = postedDate;
-    this.viewedCount = viewedCount;
-    this.postedBy = postedBy;
-    this.submittedCount = submittedCount;
-  }
-
-  public String getPicture() {
-    return picture;
-  }
-
-  public void setPicture(String picture) {
-    this.picture = picture;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getPostedDate() {
-    return postedDate;
-  }
-
-  public void setPostedDate(String postedDate) {
-    this.postedDate = postedDate;
-  }
-
-  public String getViewedCount() {
-    return viewedCount;
-  }
-
-  public void setViewedCount(String viewedCount) {
-    this.viewedCount = viewedCount;
-  }
-
-  public String getPostedBy() {
-    return postedBy;
-  }
-
-  public void setPostedBy(String postedBy) {
-    this.postedBy = postedBy;
-  }
-
-  public String getSubmittedCount() {
-    return submittedCount;
-  }
-
-  public void setSubmittedCount(String submittedCount) {
-    this.submittedCount = submittedCount;
-  }
-
-  public void copy(Job job) {
-    this.picture = job.getPicture();
-    this.title = job.getTitle();
-    this.postedDate = job.getPostedDate();
-    this.viewedCount = job.getViewedCount();
-    this.postedBy = job.getPostedBy();
-    this.submittedCount = job.getSubmittedCount();
-  }
-
-  @Override
-  public String toString() {
-    return "ClassPojo [picture = " + picture + ", title = " + title + ", postedDate = " + postedDate + ", viewedCount = " + viewedCount + ", postedBy = " + postedBy + ", submittedCount = " + submittedCount + "]";
-  }
-
-
-  @Override
-  public int compareTo(Job o) {
-    try {
-      DateFormat df = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-      Date postedDate = df.parse(this.postedDate);
-      Date oPostedDate = df.parse(o.getPostedDate());
-
-      return postedDate.compareTo(oPostedDate);
-    } catch (ParseException e) {
-      //TODO
-      e.printStackTrace();
+    public Job() {
     }
-    return 0;
-  }
+
+    public Job(String picture, String title, String postedDate, String viewedCount, String postedBy, String submittedCount) {
+        this.mPicture = picture;
+        this.mTitle = title;
+        this.mPostedDate = postedDate;
+        this.mViewedCount = viewedCount;
+        this.mPostedBy = postedBy;
+        this.mSubmittedCount = submittedCount;
+    }
+
+    public String getmPicture() {
+        return mPicture;
+    }
+
+    public void setmPicture(String mPicture) {
+        this.mPicture = mPicture;
+    }
+
+    public String getmTitle() {
+        return mTitle;
+    }
+
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public String getmPostedDate() {
+        return mPostedDate;
+    }
+
+    public void setmPostedDate(String mPostedDate) {
+        this.mPostedDate = mPostedDate;
+    }
+
+    public String getmViewedCount() {
+        return mViewedCount;
+    }
+
+    public void setmViewedCount(String mViewedCount) {
+        this.mViewedCount = mViewedCount;
+    }
+
+    public String getmPostedBy() {
+        return mPostedBy;
+    }
+
+    public void setmPostedBy(String mPostedBy) {
+        this.mPostedBy = mPostedBy;
+    }
+
+    public String getmSubmittedCount() {
+        return mSubmittedCount;
+    }
+
+    public void setmSubmittedCount(String mSubmittedCount) {
+        this.mSubmittedCount = mSubmittedCount;
+    }
+
+    public void copy(Job job) {
+        this.mPicture = job.getmPicture();
+        this.mTitle = job.getmTitle();
+        this.mPostedDate = job.getmPostedDate();
+        this.mViewedCount = job.getmViewedCount();
+        this.mPostedBy = job.getmPostedBy();
+        this.mSubmittedCount = job.getmSubmittedCount();
+    }
+
+    @Override
+    public String toString() {
+        return "ClassPojo [mPicture = " + mPicture + ", mTitle = " + mTitle + ", mPostedDate = " + mPostedDate + ", mViewedCount = " + mViewedCount + ", mPostedBy = " + mPostedBy + ", mSubmittedCount = " + mSubmittedCount + "]";
+    }
+
+
+    @Override
+    public int compareTo(Job o) {
+        try {
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+            Date postedDate = df.parse(this.mPostedDate);
+            Date oPostedDate = df.parse(o.getmPostedDate());
+
+            return postedDate.compareTo(oPostedDate);
+        } catch (ParseException e) {
+            //TODO
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

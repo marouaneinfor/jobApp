@@ -18,13 +18,15 @@
 
 package jobapp.sqli.com.jobapp.presenter;
 
-import jobapp.sqli.com.jobapp.MainView;
+import jobapp.sqli.com.jobapp.views.MainView;
 
 public interface MainPresenter {
 
-  MainView getMainView();
+    @SuppressWarnings("unused")
+    MainView getMainView();
 
-  public void onResume();
+    void onResume();
 
-  void onDestroy();
+    @SuppressWarnings("unused")
+    void onDestroy();
 }

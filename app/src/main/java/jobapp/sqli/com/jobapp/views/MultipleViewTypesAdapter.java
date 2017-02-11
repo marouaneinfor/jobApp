@@ -1,30 +1,24 @@
-package jobapp.sqli.com.jobapp.adapters;
+package jobapp.sqli.com.jobapp.views;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
-import jobapp.sqli.com.jobapp.MainView;
 import jobapp.sqli.com.jobapp.R;
 import jobapp.sqli.com.jobapp.constants.JobConstants;
 import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
-import jobapp.sqli.com.jobapp.viewHolders.ViewHolderCandidat;
-import jobapp.sqli.com.jobapp.viewHolders.ViewHolderRecruter;
 
 public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
   private List<Object> mList;
-  private MainView mMainView;
 
-  public MultipleViewTypesAdapter(List<Object> list, MainView mainView) {
+  public MultipleViewTypesAdapter(List<Object> list) {
     this.mList = list;
-    this.mMainView = mainView;
   }
 
   @Override
@@ -54,8 +48,7 @@ public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.
   }
 
   @Override
-  public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos) {
-    final int position=pos;
+  public void onBindViewHolder(RecyclerView.ViewHolder holder, final  int position) {
 
     switch (getItemViewType(position)) {
       case JobConstants.VIEW_TYPE_FOR_CANDIDAT:
@@ -65,7 +58,7 @@ public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.
         mViewHolderCandidat.getTextView_recomandation().setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            mViewHolderCandidat.setRecomandationCount(candidat.getCurrentRecommendation(),mViewHolderCandidat.getTextView_recomandation());
+            mViewHolderCandidat.setRecomandationCount(candidat.getmCurrentRecommendation(),mViewHolderCandidat.getTextView_recomandation());
           }
         });
         break;
@@ -80,8 +73,5 @@ public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.
   @Override
   public int getItemCount() {
     return mList.size();
-  }
-  public Object getItemByPosition(int position) {
-    return mList.get(position);
   }
 }

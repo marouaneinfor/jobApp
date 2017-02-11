@@ -1,3 +1,8 @@
 <resources>
-  <string name="app_name">JobApp</string>
+    <string name="app_name">JobApp</string>
+    <string name="experience">Ex: %1$s an(s)</string>
+    <string name="recomandation">RECOMANDER (%1$s)</string>
+    <string name="postedBy">Posté par: %1$s</string>
+    <string name="postedDate">Posté le:: %1$s</string>
+
 </resources>

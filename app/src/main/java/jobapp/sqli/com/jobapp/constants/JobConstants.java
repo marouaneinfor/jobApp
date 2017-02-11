@@ -2,12 +2,12 @@ package jobapp.sqli.com.jobapp.constants;
 
 
 public interface JobConstants {
-  public  final String USER_TYPE_RECRUTER="RECRUTER";
-  public  final String USER_TYPE_CANDIDAT="CANDIDAT";
-  public  final String USER_TYPE_ADMIN="ADMIN";
-  public static final int VIEW_TYPE_FOR_CANDIDAT = 0;
-  public static final int VIEW_TYPE_FOR_RECRUTER = 1;
-  public  final String ERROR_MESSAGE="Error : can't load data";
-
+    String USER_TYPE_ADMIN = "ADMIN";
+    int VIEW_TYPE_FOR_CANDIDAT = 0;
+    int VIEW_TYPE_FOR_RECRUTER = 1;
+    String ERROR_MESSAGE = "Error : can't load data";
+    String BASE_URL = "http://beta.json-generator.com/";
+    String JOBS_URL = "/api/json/get/41OUsE5UW";
+    String CANDIDATS_URL = "/api/json/get/EJ5uiN98b";
 
 }
