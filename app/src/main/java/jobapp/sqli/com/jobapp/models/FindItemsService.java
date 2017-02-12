@@ -8,14 +8,15 @@ import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import rx.Observable;
 
 public interface FindItemsService {
 
   @GET(JobConstants.JOBS_URL)
-  Call<List<Job>> requestJobs();
+  Observable<List<Job>> requestJobs();
 
   @GET(JobConstants.CANDIDATS_URL)
-  Call<List<Candidat>> requestCandidats();
+  Observable<List<Candidat>> requestCandidats();
 
 
 }

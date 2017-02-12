@@ -9,6 +9,7 @@ import jobapp.sqli.com.jobapp.constants.JobConstants;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -36,6 +37,7 @@ public class NetModule {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(JobConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         return retrofit;
     }
