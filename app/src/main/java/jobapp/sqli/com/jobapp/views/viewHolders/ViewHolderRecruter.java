@@ -1,4 +1,4 @@
-package jobapp.sqli.com.jobapp.views;
+package jobapp.sqli.com.jobapp.views.viewHolders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,7 +17,6 @@ public class ViewHolderRecruter extends RecyclerView.ViewHolder {
     TextView mTextView_postedDate;
     TextView mTextView_viewedCount;
     TextView mTextView_submittedCount;
-    private ImageLoader mImageLoader;
 
     private View mView;
 
@@ -30,12 +29,11 @@ public class ViewHolderRecruter extends RecyclerView.ViewHolder {
         mTextView_viewedCount = (TextView) this.mView.findViewById(R.id.TextView_viewedCount);
         mTextView_submittedCount = (TextView) this.mView.findViewById(R.id.TextView_submittedCount);
         mImageView_job = (ImageView) this.mView.findViewById(R.id.imageView_job);
-        mImageLoader = new ImageLoader(this.mView.getContext());
 
     }
 
     public void setContent(Job job) {
-        mImageLoader.loadImage(job.getmPicture(), mImageView_job);
+        ImageLoader.loadImage(job.getmPicture(), mImageView_job);
         mTextView_title.setText(job.getmTitle());
         mTextView_postedBy.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedBy()));
         mTextView_postedDate.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedDate()));

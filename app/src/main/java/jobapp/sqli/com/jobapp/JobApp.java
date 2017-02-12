@@ -6,8 +6,7 @@ import android.content.Context;
 import io.realm.Realm;
 
 
-
-public class JobApp  extends Application{
+public class JobApp extends Application {
     private static Context mContext;
 
     @Override
@@ -15,13 +14,12 @@ public class JobApp  extends Application{
         super.onCreate();
         mContext = getApplicationContext();
         initRealMConfig();
+
     }
 
-    private void initRealMConfig(){
+    private void initRealMConfig() {
         Realm.init(this);
-
     }
-
 
     public static Context getContext() {
         return mContext;

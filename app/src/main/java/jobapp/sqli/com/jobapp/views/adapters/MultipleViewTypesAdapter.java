@@ -1,4 +1,4 @@
-package jobapp.sqli.com.jobapp.views;
+package jobapp.sqli.com.jobapp.views.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import jobapp.sqli.com.jobapp.R;
 import jobapp.sqli.com.jobapp.constants.JobConstants;
 import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
+import jobapp.sqli.com.jobapp.views.viewHolders.ViewHolderCandidat;
+import jobapp.sqli.com.jobapp.views.viewHolders.ViewHolderRecruter;
 
 public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

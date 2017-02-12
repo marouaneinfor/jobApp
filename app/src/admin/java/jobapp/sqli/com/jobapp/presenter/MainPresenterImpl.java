@@ -3,20 +3,23 @@ package jobapp.sqli.com.jobapp.presenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import jobapp.sqli.com.jobapp.constants.JobConstants;
+import jobapp.sqli.com.jobapp.dagger.interactors.DaggerInteractorComponent;
+import jobapp.sqli.com.jobapp.dagger.interactors.InteractorModule;
 import jobapp.sqli.com.jobapp.models.FindItemsInteractor;
 import jobapp.sqli.com.jobapp.views.MainView;
 
 public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
-
+  @Inject FindItemsInteractor mFindItemsInteractor;
   private MainView mainView;
-  private FindItemsInteractor mFindItemsInteractor;
   private boolean isFinished ;
   private List<Object> mJobsAndCandidats = new ArrayList<>();
 
-  public MainPresenterImpl(MainView mainView, FindItemsInteractor findItemsInteractor) {
+  public MainPresenterImpl(MainView mainView) {
     this.mainView = mainView;
-    this.mFindItemsInteractor = findItemsInteractor;
+    DaggerInteractorComponent.builder().interactorModule(new InteractorModule()).build().inject(this);
     this.mFindItemsInteractor.addListener(this);
   }
 

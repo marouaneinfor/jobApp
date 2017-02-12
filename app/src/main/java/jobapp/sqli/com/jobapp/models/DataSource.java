@@ -4,18 +4,18 @@ package jobapp.sqli.com.jobapp.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import jobapp.sqli.com.jobapp.constants.JobConstants;
+import javax.inject.Inject;
+
+import jobapp.sqli.com.jobapp.dagger.net.DaggerNetComponent;
+import jobapp.sqli.com.jobapp.dagger.net.NetModule;
 import jobapp.sqli.com.jobapp.helpers.NetworkInfo;
 import jobapp.sqli.com.jobapp.helpers.StorageProvider;
 import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DataSource implements FindItemsInteractor {
 
@@ -26,16 +26,11 @@ public class DataSource implements FindItemsInteractor {
     private List<Candidat> mCandidat = new ArrayList<>();
     private StorageProvider mStorageProvider;
     private FindItemsService mService;
-
+    @Inject
+    Retrofit retrofit;
 
     public DataSource() {
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel
-                (HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(JobConstants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
-                .build();
+        DaggerNetComponent.builder().netModule(new NetModule()).build().inject(this);
         mService = retrofit.create(FindItemsService.class);
         this.mStorageProvider = new StorageProvider();
     }

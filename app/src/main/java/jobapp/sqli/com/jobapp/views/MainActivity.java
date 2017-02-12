@@ -11,18 +11,21 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import jobapp.sqli.com.jobapp.BuildConfig;
+import javax.inject.Inject;
+
 import jobapp.sqli.com.jobapp.R;
-import jobapp.sqli.com.jobapp.constants.JobConstants;
-import jobapp.sqli.com.jobapp.models.FindItemsInteractorImpl;
+import jobapp.sqli.com.jobapp.dagger.presenters.DaggerPresenterComponent;
+import jobapp.sqli.com.jobapp.dagger.presenters.PresenterModule;
 import jobapp.sqli.com.jobapp.presenter.*;
+import jobapp.sqli.com.jobapp.views.adapters.MultipleViewTypesAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements MainView {
     private RecyclerView mRecyclerView;
     private MultipleViewTypesAdapter mAdapter;
-    private MainPresenter mPresenter; //TODO Dagger
     private ProgressBar mProgressBar;
+    @Inject
+    MainPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mPresenter = new MainPresenterImpl(this, new FindItemsInteractorImpl());
         mProgressBar = (ProgressBar) findViewById(R.id.progress);
+        DaggerPresenterComponent.builder().presenterModule(new PresenterModule(this)).build().inject(this);
+
     }
 
     @Override

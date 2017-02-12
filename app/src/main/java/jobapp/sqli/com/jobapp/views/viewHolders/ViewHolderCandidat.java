@@ -1,4 +1,4 @@
-package jobapp.sqli.com.jobapp.views;
+package jobapp.sqli.com.jobapp.views.viewHolders;
 
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +23,6 @@ public class ViewHolderCandidat extends RecyclerView.ViewHolder {
     TextView mTextView_experience;
     TextView mTextView_contact;
     private View mView;
-    private ImageLoader mImageLoader;
 
     public ViewHolderCandidat(View view) {
         super(view);
@@ -38,11 +37,10 @@ public class ViewHolderCandidat extends RecyclerView.ViewHolder {
         if (!BuildConfig.USER_TYPE.equals(JobConstants.USER_TYPE_ADMIN)) {
             mTextView_contact.setVisibility(View.GONE);
         }
-        mImageLoader = new ImageLoader(this.mView.getContext());
     }
 
     public void setContent(Candidat candidat) {
-        mImageLoader.loadImage(candidat.getmPicture(), mImageView_candidat);
+        ImageLoader.loadImage(candidat.getmPicture(), mImageView_candidat);
         mTextView_name.setText(candidat.getmFirstName() + " " + candidat.getmLastName());
         mTextView_job.setText(candidat.getmJob());
         mTextView_age.setText(candidat.getmAge());
