@@ -57,10 +57,10 @@ public class MultipleViewTypesAdapter extends RecyclerView.Adapter<RecyclerView.
         final Candidat candidat=(Candidat)mList.get(position);
        final ViewHolderCandidat mViewHolderCandidat = (ViewHolderCandidat) holder;
         mViewHolderCandidat.setContent((Candidat) mList.get(position));
-        mViewHolderCandidat.getTextView_recomandation().setOnClickListener(new View.OnClickListener() {
+        mViewHolderCandidat.getmRecomandation().setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            mViewHolderCandidat.setRecomandationCount(candidat.getmCurrentRecommendation(),mViewHolderCandidat.getTextView_recomandation());
+            mViewHolderCandidat.setRecomandationCount(candidat.getmCurrentRecommendation(),mViewHolderCandidat.getmRecomandation());
           }
         });
         break;

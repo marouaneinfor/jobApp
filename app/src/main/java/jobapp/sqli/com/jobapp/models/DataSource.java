@@ -20,7 +20,8 @@ import rx.schedulers.Schedulers;
 public class DataSource implements FindItemsInteractor {
 
     private ArrayList<OnFinishedListener> listeners = new ArrayList<>();
-    private StorageProvider mStorageProvider;
+    @Inject
+    StorageProvider mStorageProvider;
     private FindItemsService mService;
     @Inject
     Retrofit retrofit;
@@ -28,7 +29,6 @@ public class DataSource implements FindItemsInteractor {
     public DataSource() {
         DaggerNetComponent.builder().netModule(new NetModule()).build().inject(this);
         mService = retrofit.create(FindItemsService.class);
-        this.mStorageProvider = new StorageProvider();
     }
 
     protected void requestJobs() {

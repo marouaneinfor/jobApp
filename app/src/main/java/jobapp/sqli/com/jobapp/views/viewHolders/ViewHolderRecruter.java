@@ -11,34 +11,34 @@ import jobapp.sqli.com.jobapp.pojo.Job;
 
 public class ViewHolderRecruter extends RecyclerView.ViewHolder {
 
-    ImageView mImageView_job;
-    TextView mTextView_title;
-    TextView mTextView_postedBy;
-    TextView mTextView_postedDate;
-    TextView mTextView_viewedCount;
-    TextView mTextView_submittedCount;
+    ImageView mJob;
+    TextView mTitle;
+    TextView mPostedBy;
+    TextView mPostedDate;
+    TextView mViewedCount;
+    TextView mSubmittedCount;
 
     private View mView;
 
     public ViewHolderRecruter(View view) {
         super(view);
         this.mView = view;
-        mTextView_title = (TextView) this.mView.findViewById(R.id.TextView_title);
-        mTextView_postedBy = (TextView) this.mView.findViewById(R.id.TextView_postedBy);
-        mTextView_postedDate = (TextView) this.mView.findViewById(R.id.TextView_postedDate);
-        mTextView_viewedCount = (TextView) this.mView.findViewById(R.id.TextView_viewedCount);
-        mTextView_submittedCount = (TextView) this.mView.findViewById(R.id.TextView_submittedCount);
-        mImageView_job = (ImageView) this.mView.findViewById(R.id.imageView_job);
+        mTitle = (TextView) this.mView.findViewById(R.id.title);
+        mPostedBy = (TextView) this.mView.findViewById(R.id.postedBy);
+        mPostedDate = (TextView) this.mView.findViewById(R.id.postedDate);
+        mViewedCount = (TextView) this.mView.findViewById(R.id.viewedCount);
+        mSubmittedCount = (TextView) this.mView.findViewById(R.id.submittedCount);
+        mJob = (ImageView) this.mView.findViewById(R.id.picture);
 
     }
 
     public void setContent(Job job) {
-        ImageLoader.loadImage(job.getmPicture(), mImageView_job);
-        mTextView_title.setText(job.getmTitle());
-        mTextView_postedBy.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedBy()));
-        mTextView_postedDate.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedDate()));
-        mTextView_viewedCount.setText(job.getmViewedCount());
-        mTextView_submittedCount.setText(job.getmSubmittedCount());
+        ImageLoader.loadImage(job.getmPicture(), mJob);
+        mTitle.setText(job.getmTitle());
+        mPostedBy.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedBy()));
+        mPostedDate.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedDate()));
+        mViewedCount.setText(job.getmViewedCount());
+        mSubmittedCount.setText(job.getmSubmittedCount());
 
     }
 

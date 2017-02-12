@@ -11,6 +11,7 @@ public interface FindItemsInteractor {
     interface OnFinishedListener {
         void onDataLoaded(List<Object> data);
 
+        @SuppressWarnings("unused")
         void onDataFailed();
 
 

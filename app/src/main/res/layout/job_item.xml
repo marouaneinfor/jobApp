@@ -22,7 +22,7 @@
         android:padding="16dp">
 
       <ImageView
-          android:id="@+id/imageView_job"
+          android:id="@+id/picture"
           android:layout_width="80dp"
           android:layout_height="90dp"
           android:layout_alignParentTop="true"
@@ -30,20 +30,20 @@
           />
 
       <TextView
-          android:id="@+id/TextView_title"
+          android:id="@+id/title"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignParentTop="true"
-          android:layout_toRightOf="@+id/imageView_job"
+          android:layout_toRightOf="@+id/picture"
           android:paddingBottom="5dp"
           android:textSize="18sp"/>
 
       <TextView
-          android:id="@+id/TextView_postedBy"
+          android:id="@+id/postedBy"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/TextView_title"
-          android:layout_toRightOf="@+id/imageView_job"
+          android:layout_below="@+id/title"
+          android:layout_toRightOf="@+id/picture"
           android:textColor="#8b8b8b"
           android:textSize="16sp"/>
 
@@ -52,18 +52,18 @@
           android:id="@+id/ImageView_numberOfViews"
           android:layout_width="20dp"
           android:layout_height="40dp"
-          android:layout_below="@+id/TextView_postedDate"
+          android:layout_below="@+id/postedDate"
           android:layout_marginLeft="210dp"
           android:layout_marginTop="10dp"
 
           android:src="@drawable/ic_visibility_black_24dp"
           />
       <TextView
-          android:id="@+id/TextView_viewedCount"
+          android:id="@+id/viewedCount"
           android:layout_marginTop="20dp"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/TextView_postedDate"
+          android:layout_below="@+id/postedDate"
           android:layout_toRightOf="@id/ImageView_numberOfViews"
           android:textColor="#8b8b8b"
           android:textSize="14sp"
@@ -72,32 +72,32 @@
           android:id="@+id/ImageView_numberOfPost"
           android:layout_width="25dp"
           android:layout_height="40dp"
-          android:layout_below="@+id/TextView_postedDate"
+          android:layout_below="@+id/postedDate"
           android:layout_marginLeft="25dp"
           android:layout_marginTop="10dp"
           android:layout_toRightOf="@+id/ImageView_numberOfViews"
           android:src="@drawable/ic_supervisor_account_black_24dp"
           />
       <TextView
-          android:id="@+id/TextView_submittedCount"
+          android:id="@+id/submittedCount"
           android:layout_marginTop="20dp"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/TextView_postedDate"
+          android:layout_below="@+id/postedDate"
           android:layout_toRightOf="@id/ImageView_numberOfPost"
           android:textColor="#8b8b8b"
           android:textSize="14sp"
           />
 
       <TextView
-          android:id="@+id/TextView_postedDate"
+          android:id="@+id/postedDate"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textColor="#8b8b8b"
           android:textSize="16sp"
-          android:layout_below="@+id/TextView_postedBy"
-          android:layout_toRightOf="@+id/imageView_job"
-          android:layout_toEndOf="@+id/imageView_job"
+          android:layout_below="@+id/postedBy"
+          android:layout_toRightOf="@+id/picture"
+          android:layout_toEndOf="@+id/picture"
 
           />
 
