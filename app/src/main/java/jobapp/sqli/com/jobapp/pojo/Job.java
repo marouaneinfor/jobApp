@@ -90,14 +90,6 @@ public class Job extends RealmObject implements Comparable<Job> {
         this.mSubmittedCount = mSubmittedCount;
     }
 
-    public void copy(Job job) {
-        this.mPicture = job.getmPicture();
-        this.mTitle = job.getmTitle();
-        this.mPostedDate = job.getmPostedDate();
-        this.mViewedCount = job.getmViewedCount();
-        this.mPostedBy = job.getmPostedBy();
-        this.mSubmittedCount = job.getmSubmittedCount();
-    }
 
     @Override
     public String toString() {

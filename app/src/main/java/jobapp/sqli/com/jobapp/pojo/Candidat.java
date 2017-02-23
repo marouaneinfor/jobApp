@@ -133,17 +133,7 @@ public class Candidat extends RealmObject implements Comparable<Candidat> {
         return "Candidat [mPicture = " + mPicture + ", mId = " + mId + ", mLastName = " + mLastName + ", mPostedDate = " + mPostedDate + ", mCurrentRecommendation = " + mCurrentRecommendation + ", mAge = " + mAge + ", mJob = " + mJob + ", mExperience = " + mExperience + ", mFirstName = " + mFirstName + "]";
     }
 
-    public void copy(Candidat candidat) {
-        this.mPicture = candidat.getmPicture();
-        this.mId = candidat.getmId();
-        this.mLastName = candidat.getmLastName();
-        this.mPostedDate = candidat.getmPostedDate();
-        this.mAge = candidat.getmAge();
-        this.mCurrentRecommendation = candidat.getmCurrentRecommendation();
-        this.mJob = candidat.getmJob();
-        this.mExperience = candidat.getmExperience();
-        this.mFirstName = candidat.getmFirstName();
-    }
+
 
     @Override
     public int compareTo(Candidat o) {

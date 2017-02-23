@@ -6,10 +6,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 import jobapp.sqli.com.jobapp.BuildConfig;
 import jobapp.sqli.com.jobapp.JobApp;
 import jobapp.sqli.com.jobapp.R;
 import jobapp.sqli.com.jobapp.constants.JobConstants;
+import jobapp.sqli.com.jobapp.dagger.component.DaggerImageComponent;
+import jobapp.sqli.com.jobapp.dagger.module.ImageHelperModule;
 import jobapp.sqli.com.jobapp.helpers.ImageLoader;
 import jobapp.sqli.com.jobapp.pojo.Candidat;
 
@@ -23,6 +27,8 @@ public class ViewHolderCandidat extends RecyclerView.ViewHolder {
     TextView mExperience;
     TextView mContact;
     private View mView;
+    @Inject
+    ImageLoader mImageLoader;
 
     public ViewHolderCandidat(View view) {
         super(view);
@@ -37,10 +43,12 @@ public class ViewHolderCandidat extends RecyclerView.ViewHolder {
         if (!BuildConfig.USER_TYPE.equals(JobConstants.USER_TYPE_ADMIN)) {
             mContact.setVisibility(View.GONE);
         }
+        DaggerImageComponent.builder().imageHelperModule(new ImageHelperModule(mPicture)).build().inject(this);
+
     }
 
     public void setContent(Candidat candidat) {
-        ImageLoader.loadImage(candidat.getmPicture(), mPicture);
+        mImageLoader.loadImage(candidat.getmPicture());
         mName.setText(candidat.getmFirstName() + " " + candidat.getmLastName());
         mJob.setText(candidat.getmJob());
         mAge.setText(candidat.getmAge());

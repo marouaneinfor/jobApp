@@ -10,13 +10,12 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import rx.Observable;
 
-public interface FindItemsService {
+public interface FindItemsService<T> {
 
-  @GET(JobConstants.JOBS_URL)
-  Observable<List<Job>> requestJobs();
+  @GET(JobConstants.URL)
+  Observable<List<T>> requestItems();
 
-  @GET(JobConstants.CANDIDATS_URL)
-  Observable<List<Candidat>> requestCandidats();
+
 
 
 }

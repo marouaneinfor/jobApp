@@ -3,8 +3,7 @@
 package jobapp.sqli.com.jobapp.models;
 
 import java.util.List;
-import jobapp.sqli.com.jobapp.pojo.Candidat;
-import jobapp.sqli.com.jobapp.pojo.Job;
+
 
 public interface FindItemsInteractor {
 
@@ -18,7 +17,7 @@ public interface FindItemsInteractor {
 
     }
 
-    void getItems();
+     void getItems();
 
 
 

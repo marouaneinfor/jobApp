@@ -3,6 +3,7 @@ package jobapp.sqli.com.jobapp.helpers;
 
 import java.util.List;
 import io.realm.Realm;
+import io.realm.RealmObject;
 import jobapp.sqli.com.jobapp.pojo.Candidat;
 import jobapp.sqli.com.jobapp.pojo.Job;
 
@@ -15,29 +16,19 @@ public class StorageProvider {
     }
 
 
-    public void saveJobs(List<Job> jobs) {
-        for (Job job : jobs) {
+    public <T  extends RealmObject> void saveItems(List<T> list, Class<T> tClass) {
+        for (T object : list) {
             realm.beginTransaction();
-            Job tmpJob = realm.createObject(Job.class);
-            tmpJob.copy(job);
+            object=realm.copyToRealm(object);
             realm.commitTransaction();
         }
     }
 
-    public void saveCandidats(List<Candidat> candidats) {
-        for (Candidat candidat : candidats) {
-            realm.beginTransaction();
-            Candidat tmpCandidat = realm.createObject(Candidat.class);
-            tmpCandidat.copy(candidat);
-            realm.commitTransaction();
-        }
+
+
+    public  <T  extends RealmObject>  List<T> getItems(Class<T> tClass) {
+        return realm.copyFromRealm(realm.where(tClass).findAll());
     }
 
-    public List<Candidat> getCandidats() {
-        return realm.copyFromRealm(realm.where(Candidat.class).findAll());
-    }
 
-    public List<Job> getJobs() {
-        return realm.copyFromRealm(realm.where(Job.class).findAll());
-    }
 }

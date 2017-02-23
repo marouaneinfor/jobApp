@@ -7,8 +7,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import jobapp.sqli.com.jobapp.constants.JobConstants;
-import jobapp.sqli.com.jobapp.dagger.interactors.DaggerInteractorComponent;
-import jobapp.sqli.com.jobapp.dagger.interactors.InteractorModule;
+import jobapp.sqli.com.jobapp.dagger.component.DaggerInteractorComponent;
+import jobapp.sqli.com.jobapp.dagger.module.InteractorModule;
 import jobapp.sqli.com.jobapp.models.FindItemsInteractor;
 import jobapp.sqli.com.jobapp.views.MainView;
 

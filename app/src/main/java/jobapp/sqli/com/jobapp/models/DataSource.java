@@ -6,18 +6,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import jobapp.sqli.com.jobapp.dagger.net.DaggerNetComponent;
-import jobapp.sqli.com.jobapp.dagger.net.NetModule;
+import io.realm.RealmObject;
+import jobapp.sqli.com.jobapp.dagger.module.NetModule;
 import jobapp.sqli.com.jobapp.helpers.NetworkInfo;
 import jobapp.sqli.com.jobapp.helpers.StorageProvider;
-import jobapp.sqli.com.jobapp.pojo.Candidat;
-import jobapp.sqli.com.jobapp.pojo.Job;
 import retrofit2.Retrofit;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class DataSource implements FindItemsInteractor {
+public class DataSource<T extends RealmObject> implements FindItemsInteractor {
 
     private ArrayList<OnFinishedListener> listeners = new ArrayList<>();
     @Inject
@@ -25,54 +23,36 @@ public class DataSource implements FindItemsInteractor {
     private FindItemsService mService;
     @Inject
     Retrofit retrofit;
+    private Class<T> mtClass;
+
+    public DataSource(Class<T> tClass) {
+        this();
+        this.mtClass = tClass;
+    }
 
     public DataSource() {
-        DaggerNetComponent.builder().netModule(new NetModule()).build().inject(this);
         mService = retrofit.create(FindItemsService.class);
     }
 
-    protected void requestJobs() {
+
+    public void getItems() {
         if (NetworkInfo.isNetworkAvailable()) {
-            Observable<List<Job>> call = mService.requestJobs();
+            Observable<List<T>> call = mService.requestItems();
             call.subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(mJobs -> {
-                        mStorageProvider.saveJobs(mJobs);
+                        mStorageProvider.saveItems(mJobs, mtClass);
                         for (OnFinishedListener listener : listeners) {
                             listener.onDataLoaded(new ArrayList<Object>(mJobs));
                         }
                     });
         } else {
             for (OnFinishedListener listener : listeners) {
-                listener.onDataLoaded(new ArrayList<Object>(mStorageProvider.getJobs()));
+                listener.onDataLoaded(new ArrayList<Object>(mStorageProvider.getItems(mtClass)));
             }
         }
     }
 
-
-    protected void requestCandidats() {
-        if (NetworkInfo.isNetworkAvailable()) {
-            Observable<List<Candidat>> call = mService.requestCandidats();
-            call.subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(mCandidat -> {
-                        mStorageProvider.saveCandidats(mCandidat);
-                        for (OnFinishedListener listener : listeners) {
-                            listener.onDataLoaded(new ArrayList<Object>(mCandidat));
-                        }
-                    });
-        } else {
-            for (OnFinishedListener listener : listeners) {
-                listener.onDataLoaded(new ArrayList<Object>(mStorageProvider.getCandidats()));
-            }
-        }
-    }
-
-
-    @Override
-    public void getItems() {
-        //TODO
-    }
 
     @SuppressWarnings("unused")
     public void addListener(OnFinishedListener listener) {

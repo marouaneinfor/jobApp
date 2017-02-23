@@ -5,7 +5,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 import jobapp.sqli.com.jobapp.R;
+import jobapp.sqli.com.jobapp.dagger.component.DaggerImageComponent;
+import jobapp.sqli.com.jobapp.dagger.module.ImageHelperModule;
 import jobapp.sqli.com.jobapp.helpers.ImageLoader;
 import jobapp.sqli.com.jobapp.pojo.Job;
 
@@ -17,7 +21,8 @@ public class ViewHolderRecruter extends RecyclerView.ViewHolder {
     TextView mPostedDate;
     TextView mViewedCount;
     TextView mSubmittedCount;
-
+    @Inject
+  ImageLoader mImageLoader;
     private View mView;
 
     public ViewHolderRecruter(View view) {
@@ -30,10 +35,12 @@ public class ViewHolderRecruter extends RecyclerView.ViewHolder {
         mSubmittedCount = (TextView) this.mView.findViewById(R.id.submittedCount);
         mJob = (ImageView) this.mView.findViewById(R.id.picture);
 
+        DaggerImageComponent.builder().imageHelperModule(new ImageHelperModule(mJob)).build().inject(this);
+
     }
 
     public void setContent(Job job) {
-        ImageLoader.loadImage(job.getmPicture(), mJob);
+        mImageLoader.loadImage(job.getmPicture());
         mTitle.setText(job.getmTitle());
         mPostedBy.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedBy()));
         mPostedDate.setText(mView.getResources().getString(R.string.postedBy, job.getmPostedDate()));

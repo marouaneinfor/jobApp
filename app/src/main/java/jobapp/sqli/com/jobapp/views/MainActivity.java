@@ -14,8 +14,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import jobapp.sqli.com.jobapp.R;
-import jobapp.sqli.com.jobapp.dagger.presenters.DaggerPresenterComponent;
-import jobapp.sqli.com.jobapp.dagger.presenters.PresenterModule;
+import jobapp.sqli.com.jobapp.dagger.component.DaggerPresenterComponent;
+import jobapp.sqli.com.jobapp.dagger.module.PresenterModule;
 import jobapp.sqli.com.jobapp.presenter.*;
 import jobapp.sqli.com.jobapp.views.adapters.MultipleViewTypesAdapter;
 

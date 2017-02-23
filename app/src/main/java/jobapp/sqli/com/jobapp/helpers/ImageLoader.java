@@ -9,10 +9,15 @@ import jobapp.sqli.com.jobapp.R;
 
 
 public class ImageLoader {
+  private ImageView mView;
 
-  public static void loadImage(String url, ImageView imageView) {
-    Picasso.with(JobApp.getContext()).load(url).placeholder(R.drawable.placeholder).error(R.drawable.error_placeholder)
-        .into(imageView);
+  public ImageLoader(ImageView mImageView) {
+    this.mView = mImageView;
+  }
+
+  public  void loadImage(String mUrl) {
+    Picasso.with(mView.getContext()).load(mUrl).placeholder(R.drawable.placeholder).error(R.drawable.error_placeholder)
+        .into(mView);
 
   }
 }
